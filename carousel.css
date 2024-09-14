@@ -1,80 +1,59 @@
-body {
-    font-family: Arial, sans-serif;
-}
-
-.post {
-    width: 598px;
-    margin: 50px auto;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    padding: 10px;
-    background-color: #fff;
-}
-
 .carousel-container {
     position: relative;
-    width: 100%; /* Le conteneur fait exactement 598px */
-    max-width: 598px;
     overflow: hidden;
+    width: 598px; /* Largeur du carrousel */
 }
 
 .carousel-slide {
-    display: flex; /* Affiche les images côte à côte */
-    width: 300%; /* Largeur totale basée sur le nombre d'images */
-    transition: transform 0.5s ease-in-out; /* Effet de transition lors du slide */
+    display: flex; /* Utilise flexbox pour aligner les images en ligne */
+    transition: transform 0.5s ease; /* Ajoute une transition pour un effet de glissement */
 }
 
-.carousel-slide img {
-    width: 598px; /* Chaque image prend 598px de largeur */
-    height: auto; /* Maintient le ratio d'aspect */
+.slide {
+    min-width: 598px; /* Largeur d'une image */
+    object-fit: cover; /* S'assure que l'image garde ses proportions */
+}
+
+input[type="radio"] {
+    display: none; /* Masque les radios */
+}
+
+input[type="radio"]:checked + .carousel-slide {
+    transform: translateX(calc(-598px * var(--checked-index)));
+}
+
+input[type="radio"]:checked {
+    --checked-index: 0; /* Par défaut, on est sur la première image */
+}
+
+#image1:checked ~ .carousel-slide {
+    transform: translateX(0);
+}
+
+#image2:checked ~ .carousel-slide {
+    transform: translateX(-598px);
+}
+
+#image3:checked ~ .carousel-slide {
+    transform: translateX(-1196px); /* Ajuste la position pour la troisième image */
 }
 
 .dots {
-    text-align: center;
+    display: flex;
+    justify-content: center;
     margin-top: 10px;
 }
 
 .dot {
-    display: inline-block;
-    height: 10px;
-    width: 10px;
-    margin: 0 5px;
-    background-color: #bbb;
+    width: 15px;
+    height: 15px;
     border-radius: 50%;
+    background-color: grey;
+    margin: 0 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    display: inline-block;
 }
 
-.dot.active {
-    background-color: #717171;
-}
-
-/* Style des boutons de navigation */
-.prev, .next {
-    cursor: pointer;
-    position: absolute;
-    top: 50%;
-    width: auto;
-    padding: 16px;
-    margin-top: -22px;
-    color: white;
-    font-weight: bold;
-    font-size: 18px;
-    border-radius: 0 3px 3px 0;
-    user-select: none;
-    background-color: rgba(0,0,0,0.5);
-}
-
-.next {
-    right: 0;
-    border-radius: 3px 0 0 3px;
-}
-
-.prev {
-    left: 0;
-    border-radius: 3px 0 0 3px;
-}
-
-.prev:hover, .next:hover {
-    background-color: rgba(0, 0, 0, 0.8);
+input[type="radio"]:checked + .dots .dot {
+    background-color: blue; /* Change la couleur du point sélectionné */
 }
