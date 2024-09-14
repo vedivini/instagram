@@ -1,0 +1,80 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.post {
+    width: 598px;
+    margin: 50px auto;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #fff;
+}
+
+.carousel-container {
+    position: relative;
+    width: 100%; /* Le conteneur fait exactement 598px */
+    max-width: 598px;
+    overflow: hidden;
+}
+
+.carousel-slide {
+    display: flex; /* Affiche les images côte à côte */
+    width: 300%; /* Largeur totale basée sur le nombre d'images */
+    transition: transform 0.5s ease-in-out; /* Effet de transition lors du slide */
+}
+
+.carousel-slide img {
+    width: 598px; /* Chaque image prend 598px de largeur */
+    height: auto; /* Maintient le ratio d'aspect */
+}
+
+.dots {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.dot {
+    display: inline-block;
+    height: 10px;
+    width: 10px;
+    margin: 0 5px;
+    background-color: #bbb;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.dot.active {
+    background-color: #717171;
+}
+
+/* Style des boutons de navigation */
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -22px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.prev {
+    left: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
